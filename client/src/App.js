@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CssBaseline, Grid } from "@material-ui/core";
 
 import {
@@ -8,7 +9,9 @@ import {
   getSinlgeRandomActivity,
 } from "./api";
 import Header from "./components/Header/Header";
-import List from "./components/List/List";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
+import Homepage from "./components/Homepage/Homepage";
+import Search from "./components/Search/Search";
 
 const App = () => {
   const [activities, setActivities] = useState([]);
@@ -16,35 +19,34 @@ const App = () => {
   const [randomActivities, setRandomActivities] = useState([]);
   const [singleRandomActivity, setSingleRandomActivity] = useState([]);
 
-  const [searchActivity, setSearchActivity] = useState([]);
-  // const [filteredActivities, setFilteredActivities] = useState([]);
+  const [searchActivity, setSearchActivity] = useState("");
 
   const [type, setType] = useState("");
-  const [price, setPrice] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
 
-  // só qd carrega a página
-  useEffect(() => {
-    getAllActivities().then((data) => {
-      setAllActivities(data);
-    });
-  }, []);
+  useEffect(
+    () => {
+      getAllActivities().then((data) => {
+        setAllActivities(data);
+      });
+    },
+    [
+      /* searchActivity */
+    ]
+  );
 
   useEffect(() => {
     getRandomActivities().then((data) => {
       setRandomActivities(data);
     });
-  }, []);
+  }, [randomActivities]);
 
-  useEffect(
-    (singleRandomActivity) => {
-      getSinlgeRandomActivity().then((data) => {
-        setSingleRandomActivity(data);
-      });
-    },
-    [singleRandomActivity]
-  );
+  useEffect(() => {
+    getSinlgeRandomActivity().then((data) => {
+      setSingleRandomActivity(data);
+    });
+  }, [singleRandomActivity]);
 
   useEffect(() => {
     getActivitiesByType(type).then((data) => {
@@ -63,36 +65,41 @@ const App = () => {
   return (
     <>
       <CssBaseline />
-      <Header
-        allActivities={allActivities}
-        searchActivity={searchActivity}
-        setSearchActivity={setSearchActivity}
-      />
-      <Grid
-        container
-        spacing={4}
-        style={{ width: "100%" }}
-        justifyContent="center"
-      >
-        <Grid item xs={12} md={10}>
-          <List
-            allActivities={allActivities}
-            searchActivity={searchActivity}
-            setSearchActivity={setSearchActivity}
-            activities={
-              /* filteredActivities.lenght ? filteredActivities : */ activities
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Homepage
+                allActivities={allActivities}
+                searchActivity={searchActivity}
+                setSearchActivity={setSearchActivity}
+                activities={
+                  /* filteredActivities.lenght ? filteredActivities : */ activities
+                }
+                setActivities={setActivities}
+                randomActivities={randomActivities}
+                singleRandomActivity={singleRandomActivity}
+                type={type}
+                isLoading={isLoading}
+                setType={setType}
+              />
             }
-            setActivities={setActivities}
-            randomActivities={randomActivities}
-            singleRandomActivity={singleRandomActivity}
-            type={type}
-            isLoading={isLoading}
-            setType={setType}
-            price={price}
-            setPrice={setPrice}
           />
-        </Grid>
-      </Grid>
+          <Route
+            path="/search"
+            element={
+              <Search
+                allActivities={allActivities}
+                searchActivity={searchActivity}
+                setSearchActivity={setSearchActivity}
+              />
+            }
+          />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 };

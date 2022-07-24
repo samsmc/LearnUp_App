@@ -1,11 +1,20 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, InputBase, Box } from "@material-ui/core";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  InputBase,
+  Box,
+  Button,
+} from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 
 import useStyles from "./header-styles";
 
-const Header = ({ allActivities, setSearchActivity }) => {
+function Header() {
   const classes = useStyles();
+  let navigate = useNavigate();
 
   return (
     <AppBar position="static">
@@ -20,20 +29,38 @@ const Header = ({ allActivities, setSearchActivity }) => {
 
           <div className={classes.search}>
             <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
+              {/* <InputBase
               placeholder="Search..."
               classes={{ root: classes.inputRoot, input: classes.inputInput }}
               onChange={(e) => {
                 setSearchActivity(e.target.value);
               }}
-            />
+            /> */}
+            </div>
           </div>
         </Box>
+        <Button
+          component={Link}
+          to="/search"
+          variant="contained"
+          color="primary"
+        >
+          search
+          <SearchIcon />
+        </Button>
+
+        {/* <Button
+          variant="contained"
+          onClick={() => {
+            navigate("/search");
+          }}
+        >
+          search
+          <SearchIcon />
+        </Button> */}
       </Toolbar>
     </AppBar>
   );
-};
+}
 
 export default Header;
