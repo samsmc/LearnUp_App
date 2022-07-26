@@ -4,7 +4,6 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  InputBase,
   Box,
   Button,
 } from "@material-ui/core";
@@ -28,13 +27,6 @@ function Header() {
 
           <div className={classes.search}>
             <div className={classes.searchIcon}>
-              {/* <InputBase
-              placeholder="Search..."
-              classes={{ root: classes.inputRoot, input: classes.inputInput }}
-              onChange={(e) => {
-                setSearchActivity(e.target.value);
-              }}
-            /> */}
             </div>
           </div>
         </Box>

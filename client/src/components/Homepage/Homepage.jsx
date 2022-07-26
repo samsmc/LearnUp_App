@@ -91,7 +91,7 @@ const Homepage = ({
                     navigate("/table");
                   }}
                 >
-                  Check it All
+                  Full list
                 </Button>
 
                 <List

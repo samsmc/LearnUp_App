@@ -6,6 +6,8 @@ import {
   TableSortLabel,
 } from "@material-ui/core";
 
+import useStyles from "./styles-activities-table";
+
 const headCells = [
   { id: "activity", label: "Activity Name" },
   { id: "accessibility", label: "Accessibility" },
@@ -15,6 +17,8 @@ const headCells = [
 ];
 
 export default function TableHeader(props) {
+  const classes = useStyles();
+
   const { orderBy, order, handleSortRequest } = props;
 
   return (
@@ -31,6 +35,7 @@ export default function TableHeader(props) {
                 headCell.label
               ) : (
                 <TableSortLabel
+                  className={classes.header}
                   active={orderBy === headCell.id}
                   direction={orderBy === headCell.id ? order : "asc"}
                   onClick={() => {

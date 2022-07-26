@@ -10,13 +10,13 @@ import {
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import AccessibilityNew from "@material-ui/icons/AccessibilityNew";
 
-import useStyles from "./activity-details-styles";
+import useStyles from "./styles-activity-details";
 
 const ActivityDetails = ({ activity }) => {
   const classes = useStyles();
 
   return (
-    <Card elevation={6}>
+    <Card elevation={6} /* sx={{ maxWidth: 345 }} */ className={classes.card}>
       <CardMedia
         style={{ height: 200 }}
         image={
@@ -27,14 +27,14 @@ const ActivityDetails = ({ activity }) => {
         title={activity.activity}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5">
+        <Typography gutterBottom variant="h5" className={classes.maxTitle}>
           {activity.activity}
         </Typography>
 
         <Chip
           key={activity?.type}
           size="small"
-          label={activity.type}
+          label={activity?.type}
           className={classes.chip}
         />
 
@@ -52,7 +52,7 @@ const ActivityDetails = ({ activity }) => {
           </Typography>
         </Box>
 
-        {activity?.accessibility && (
+        {activity?.accessibility ? (
           <Typography
             gutterBottom
             variant="subtitle2"
@@ -62,7 +62,7 @@ const ActivityDetails = ({ activity }) => {
             Accessibility
             <AccessibilityNew /> {activity.accessibility}
           </Typography>
-        )}
+        ) : null}
       </CardContent>
     </Card>
   );

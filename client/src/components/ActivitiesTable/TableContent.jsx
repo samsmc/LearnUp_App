@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Table,
   Paper,
@@ -7,9 +8,13 @@ import {
   TableBody,
   TableContainer,
   TablePagination,
+  Typography,
+  Button,
 } from "@material-ui/core";
-import useStyles from "./styles-activities-table";
+import HomeIcon from "@material-ui/icons/Home";
 import TableHeader from "./TableHeader";
+
+import useStyles from "./styles-activities-table";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -64,8 +69,11 @@ export default function TableContent({ allActivities }) {
   };
 
   return (
-    <>
+    <div>
       <Paper className={classes.pageContent}>
+        <Typography variant="h4" align="center">
+          Complete list of Activities
+        </Typography>
         <TableContainer component={Paper} sx={{ maxHeight: "300px" }}>
           <Table className={classes.table}>
             <TableHeader
@@ -109,7 +117,10 @@ export default function TableContent({ allActivities }) {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
+      <Button component={Link} to="/" variant="contained" color="primary">
+        <HomeIcon />
+      </Button>
       </Paper>
-    </>
+    </div>
   );
 }
