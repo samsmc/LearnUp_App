@@ -1,30 +1,10 @@
 import React from "react";
-import {
-  Grid,
-  /* CircularProgress,
-  Typography,
-  InputLabel,
-  MenuItem,
-  FormControl,
-  Select,
-  Button, */
-} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import ActivityDetails from "../ActivityDetails/ActivityDetails";
 
 import useStyles from "./list-styles";
 
-const List = ({
-  activities,
-  /* type,
-  allActivities,
-  setActivities,
-  randomActivities,
-  singleRandomActivity,
-  searchActivity,
-  setSearchActivity,
-  isLoading,
-  setType, */
-}) => {
+const List = ({ activities }) => {
   const classes = useStyles();
 
   return (

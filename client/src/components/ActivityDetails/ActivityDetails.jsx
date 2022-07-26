@@ -5,7 +5,6 @@ import {
   Card,
   CardMedia,
   CardContent,
-  /* CardActions, */
   Chip,
 } from "@material-ui/core";
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
@@ -13,7 +12,7 @@ import AccessibilityNew from '@material-ui/icons/AccessibilityNew';
 
 import useStyles from "./activity-details-styles";
 
-const ActivityDetails = ({ activity, selected, refProp }) => {
+const ActivityDetails = ({ activity }) => {
   const classes = useStyles();
 
   return (
@@ -32,19 +31,19 @@ const ActivityDetails = ({ activity, selected, refProp }) => {
           {activity.activity}
         </Typography>
 
-        <Chip key={activity.type} size="small" label={activity.type} className={classes.chip} />
+        <Chip key={activity?.type} size="small" label={activity.type} className={classes.chip} />
 
         <Box display="flex" justifyContent="space-between">
           <Typography variant="subtitle1">Participants</Typography>
           <Typography gutterBottom variant="subtitle1">
-            {activity.participants}
+            {activity?.participants}
           </Typography>
         </Box>
         
         <Box display="flex" justifyContent="space-between">
           <AttachMoneyIcon />
           <Typography gutterBottom variant="subtitle1">
-            {activity.price}
+            {activity?.price}
           </Typography>
         </Box>
 

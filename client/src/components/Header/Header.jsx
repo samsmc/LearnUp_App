@@ -14,7 +14,7 @@ import useStyles from "./header-styles";
 
 function Header() {
   const classes = useStyles();
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
   return (
     <AppBar position="static">
@@ -26,6 +26,10 @@ function Header() {
           <Typography variant="h6" className={classes.title}>
             Explore new activities
           </Typography>
+
+          <Link to="/">HOME</Link>
+          <Link to="/table">table</Link>
+          {/* <Link to="/use-table">USE</Link> */}
 
           <div className={classes.search}>
             <div className={classes.searchIcon}>

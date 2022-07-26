@@ -7,7 +7,7 @@ import ActivityDetails from "../ActivityDetails/ActivityDetails";
 
 const Search = ({ searchActivity, setSearchActivity, allActivities }) => {
   const classes = useStyles();
-
+  
   const filteredActivities = allActivities.filter((activities) => {
     if (searchActivity === "") {
       return;

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import {
   CircularProgress,
   Grid,
@@ -82,7 +81,6 @@ const Homepage = ({
                 >
                   Random
                 </Button>
-                <Link to="/search">SEARCH</Link>
                 <List
                   allActivities={allActivities}
                   searchActivity={searchActivity}
@@ -97,20 +95,6 @@ const Homepage = ({
                   isLoading={isLoading}
                   setType={setType}
                 />
-
-                {/* {allActivities.filter((activities) => {
-              if (searchActivity === '') {
-                return;
-              }
-              else if (activities.activity.toLowerCase().includes(searchActivity.toLowerCase())){
-                return activities;
-              }
-            }).map((activity, i) => {
-              return (
-                <Grid item xs={12} md={5} key={i}>
-                    <ActivityDetails activity={activity} />
-                </Grid>
-          )})} */}
               </>
             )}
           </div>
