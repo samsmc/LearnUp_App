@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   CircularProgress,
   Grid,
@@ -27,6 +28,8 @@ const Homepage = ({
   setType,
 }) => {
   const classes = useStyles();
+
+  let navigate = useNavigate();
 
   return (
     <>
@@ -71,7 +74,7 @@ const Homepage = ({
                   variant="contained"
                   onClick={() => setActivities(randomActivities)}
                 >
-                  Mixed
+                  Random
                 </Button>
 
                 <Button
@@ -79,8 +82,18 @@ const Homepage = ({
                   variant="contained"
                   onClick={() => setActivities(singleRandomActivity)}
                 >
-                  Random
+                  I'm Bored
                 </Button>
+                <Button
+                  className={classes.randomButton}
+                  variant="contained"
+                  onClick={() => {
+                    navigate("/table");
+                  }}
+                >
+                  Check it All
+                </Button>
+
                 <List
                   allActivities={allActivities}
                   searchActivity={searchActivity}

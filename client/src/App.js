@@ -14,6 +14,8 @@ import Homepage from "./components/Homepage/Homepage";
 import Search from "./components/Search/Search";
 import TableContent from "./components/ActivitiesTable/TableContent";
 
+import "./styles-App.css";
+
 const App = () => {
   const [activities, setActivities] = useState([]);
   const [allActivities, setAllActivities] = useState([]);

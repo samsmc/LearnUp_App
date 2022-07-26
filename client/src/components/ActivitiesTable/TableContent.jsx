@@ -8,7 +8,7 @@ import {
   TableContainer,
   TablePagination,
 } from "@material-ui/core";
-import useStyles from "./activities-table-styles";
+import useStyles from "./styles-activities-table";
 import TableHeader from "./TableHeader";
 
 function descendingComparator(a, b, orderBy) {

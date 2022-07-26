@@ -7,6 +7,10 @@ export default makeStyles((theme) => ({
       display: "block",
     },
   },
+  Linktitle: {
+    color: "#FFFFFF",
+    textDecoration: "none",
+  },
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,

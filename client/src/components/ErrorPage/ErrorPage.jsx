@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import "./error-page-styles.css";
+import "./styles-error-page.css";
 
 function ErrorPage() {
   let navigate = useNavigate();
