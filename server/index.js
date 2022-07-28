@@ -4,15 +4,19 @@ const dotenv = require("dotenv");
 const app = express();
 const userRoute = require("./routes/users");
 const activityRoute = require("./routes/activities");
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 dotenv.config();
 
-app.use(express.json());
+// app.use(express.json());
+app.use(cors({origin: process.env.PUBLIC_DOMAIN}));
+app.use(bodyParser.json());
 
 mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => {
-    console.log("MongoDB Connected!");
+    console.log("MongoDB Connected Successfully!");
   })
   .catch((err) => console.log(err));
 

@@ -5,10 +5,14 @@ import SearchIcon from "@material-ui/icons/Search";
 import useStyles from "../Homepage/styles-homepage";
 import ActivityDetails from "../ActivityDetails/ActivityDetails";
 
-const Search = ({ searchActivity, setSearchActivity, allActivities }) => {
+const Search = ({
+  searchActivity,
+  setSearchActivity,
+  mergedActivitiesData,
+}) => {
   const classes = useStyles();
-  
-  const filteredActivities = allActivities.filter((activities) => {
+
+  const filteredActivities = mergedActivitiesData.filter((activities) => {
     if (searchActivity === "") {
       return;
     } else if (
@@ -33,7 +37,13 @@ const Search = ({ searchActivity, setSearchActivity, allActivities }) => {
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="Search..."
+                placeholder={
+                  searchActivity
+                    ? "previous search: (" +
+                      searchActivity +
+                      ") type again for a new search"
+                    : "Search..."
+                }
                 classes={{ root: classes.inputRoot, input: classes.inputInput }}
                 onChange={(e) => {
                   setSearchActivity(e.target.value);

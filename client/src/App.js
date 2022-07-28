@@ -7,12 +7,17 @@ import {
   getActivitiesByType,
   getRandomActivities,
   getSinlgeRandomActivity,
+  getAllLocalActivities,
+  saveNewActivity,
 } from "./api";
 import Header from "./components/Header/Header";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import Homepage from "./components/Homepage/Homepage";
 import Search from "./components/Search/Search";
 import TableContent from "./components/ActivitiesTable/TableContent";
+import Register from "./components/userRegistration/Register";
+import Login from "./components/userRegistration/Login";
+import NewActivityForm from "./components/NewActivityForm/NewActivityForm";
 
 import "./styles-App.css";
 
@@ -21,6 +26,8 @@ const App = () => {
   const [allActivities, setAllActivities] = useState([]);
   const [randomActivities, setRandomActivities] = useState([]);
   const [singleRandomActivity, setSingleRandomActivity] = useState([]);
+  const [allLocalActivities, setAllLocalActivities] = useState([]);
+  const [concatedActivities, setConcatedActivities] = useState([]);
 
   const [searchActivity, setSearchActivity] = useState("");
 
@@ -49,11 +56,27 @@ const App = () => {
   useEffect(() => {
     getActivitiesByType(type).then((data) => {
       setActivities(data);
-      /* setActivities(data?.filter((activity) => activity.activity && activity.price <= 0));
-      setFilteredActivities([]) */
       setIsLoading(false);
     });
   }, [type]);
+
+  useEffect(() => {
+    getAllLocalActivities().then((data) => {
+      console.log({ data });
+      setAllLocalActivities(data);
+    });
+  }, []);
+
+  /* useEffect(() => {
+    saveNewActivity().then((data) => {
+      console.log({ data });
+      setAllLocalActivities(data);
+    });
+  }, []); */
+
+  let mergedActivitiesData = allActivities.concat(allLocalActivities);
+  // console.log({ mergedActivitiesData });
+
 
   return (
     <>
@@ -68,15 +91,14 @@ const App = () => {
                 allActivities={allActivities}
                 searchActivity={searchActivity}
                 setSearchActivity={setSearchActivity}
-                activities={
-                  /* filteredActivities.lenght ? filteredActivities : */ activities
-                }
+                activities={activities}
                 setActivities={setActivities}
                 randomActivities={randomActivities}
                 singleRandomActivity={singleRandomActivity}
                 type={type}
-                isLoading={isLoading}
                 setType={setType}
+                isLoading={isLoading}
+                allLocalActivities={allLocalActivities}
               />
             }
           />
@@ -84,19 +106,26 @@ const App = () => {
             path="/search"
             element={
               <Search
-                allActivities={allActivities}
+                mergedActivitiesData={mergedActivitiesData}
                 searchActivity={searchActivity}
                 setSearchActivity={setSearchActivity}
               />
             }
           />
-          {/* <Route
-            path="/content"
-            element={<Content allActivities={allActivities} />}
-          /> */}
           <Route
             path="/table"
-            element={<TableContent allActivities={allActivities} />}
+            element={
+              <TableContent
+                allActivities={allActivities}
+                mergedActivitiesData={mergedActivitiesData}
+              />
+            }
+          />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/create-activity"
+            element={<NewActivityForm type={type} setType={setType} />}
           />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

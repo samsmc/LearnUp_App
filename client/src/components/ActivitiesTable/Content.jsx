@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Paper,
   Table,
@@ -7,8 +8,8 @@ import {
   TableContainer,
   TablePagination,
 } from "@material-ui/core";
-import React, { useState } from "react";
 import TestTableHeader from "./TestTableHeader";
+
 import useStyles from "./activities-table-styles";
 
 function descendingComparator(a, b, orderBy) {

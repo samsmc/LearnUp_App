@@ -26,10 +26,13 @@ const Homepage = ({
   setSearchActivity,
   isLoading,
   setType,
+  allLocalActivities,
 }) => {
   const classes = useStyles();
 
   let navigate = useNavigate();
+
+  // console.log({allLocalActivities})
 
   return (
     <>
@@ -98,9 +101,7 @@ const Homepage = ({
                   allActivities={allActivities}
                   searchActivity={searchActivity}
                   setSearchActivity={setSearchActivity}
-                  activities={
-                    /* filteredActivities.lenght ? filteredActivities : */ activities
-                  }
+                  activities={activities}
                   setActivities={setActivities}
                   randomActivities={randomActivities}
                   singleRandomActivity={singleRandomActivity}

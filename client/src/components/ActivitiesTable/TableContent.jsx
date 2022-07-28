@@ -42,7 +42,7 @@ function sortedRowInformation(rowArray, comparator) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function TableContent({ allActivities }) {
+export default function TableContent({ mergedActivitiesData }) {
   const classes = useStyles();
 
   const numberOfRows = [10, 20];
@@ -83,7 +83,7 @@ export default function TableContent({ allActivities }) {
             />
             <TableBody>
               {sortedRowInformation(
-                allActivities,
+                mergedActivitiesData,
                 getComparator(order, orderBy)
               )
                 .slice(
@@ -113,13 +113,13 @@ export default function TableContent({ allActivities }) {
           page={page}
           rowsPerPageOptions={numberOfRows}
           rowsPerPage={rowsPerPage}
-          count={allActivities.length}
+          count={mergedActivitiesData.length}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-      <Button component={Link} to="/" variant="contained" color="primary">
-        <HomeIcon />
-      </Button>
+        <Button component={Link} to="/" variant="contained" color="primary">
+          <HomeIcon />
+        </Button>
       </Paper>
     </div>
   );
