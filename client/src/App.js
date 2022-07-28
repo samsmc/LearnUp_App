@@ -16,7 +16,6 @@ import Search from "./components/Search/Search";
 import TableContent from "./components/ActivitiesTable/TableContent";
 import Register from "./components/userRegistration/Register";
 import Login from "./components/userRegistration/Login";
-import NewActivityForm from "./components/NewActivityForm/NewActivityForm";
 
 const App = () => {
   const [activities, setActivities] = useState([]);
@@ -110,10 +109,6 @@ const App = () => {
           />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route
-            path="/create-activity"
-            element={<NewActivityForm type={type} setType={setType} />}
-          />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>

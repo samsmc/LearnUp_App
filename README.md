@@ -19,13 +19,11 @@ Create an `.env` file in the `client`folder and insert your values for the follo
 * PORT=8800
 
 ### `npm start`
-Runs in for the `client` root and for the `server` root.
+Runs it for the `client` and for the `server` root.
 
 The app in the development mode for the client can be viewed in your browser: [http://localhost:3000](http://localhost:3000).
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-
-## Learn More
 
 
