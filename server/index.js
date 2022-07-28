@@ -9,7 +9,6 @@ const cors = require('cors');
 
 dotenv.config();
 
-// app.use(express.json());
 app.use(cors({origin: process.env.PUBLIC_DOMAIN}));
 app.use(bodyParser.json());
 

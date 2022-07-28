@@ -23,7 +23,7 @@ export default function TableHeader(props) {
 
   return (
     <>
-      <TableHead /* position='static' */>
+      <TableHead>
         <TableRow>
           {headCells.map((headCell) => (
             <TableCell

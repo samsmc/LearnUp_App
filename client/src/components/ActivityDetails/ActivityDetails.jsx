@@ -16,7 +16,7 @@ const ActivityDetails = ({ activity }) => {
   const classes = useStyles();
 
   return (
-    <Card elevation={6} /* sx={{ maxWidth: 345 }} */ className={classes.card}>
+    <Card elevation={6}>
       <CardMedia
         style={{ height: 200 }}
         image={
@@ -48,21 +48,18 @@ const ActivityDetails = ({ activity }) => {
         <Box display="flex" justifyContent="space-between">
           <AttachMoneyIcon />
           <Typography gutterBottom variant="subtitle1">
-            {activity?.price}
+            {activity.price === 0 ? "free" : activity.price}
           </Typography>
         </Box>
-
-        {activity?.accessibility ? (
-          <Typography
-            gutterBottom
-            variant="subtitle2"
-            color="textSecondary"
-            className={classes.subtitle}
-          >
-            Accessibility
-            <AccessibilityNew /> {activity.accessibility}
-          </Typography>
-        ) : null}
+        <Typography
+          gutterBottom
+          variant="subtitle2"
+          color="textSecondary"
+          className={classes.subtitle}
+        >
+          Accessibility
+          <AccessibilityNew /> {activity.accessibility || "0"}
+        </Typography>
       </CardContent>
     </Card>
   );

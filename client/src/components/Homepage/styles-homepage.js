@@ -17,6 +17,7 @@ export default makeStyles((theme) => ({
   },
   container: {
     padding: "25px",
+    marginTop: "30px",
   },
   marginBottom: {
     marginBottom: "30px",
@@ -24,5 +25,13 @@ export default makeStyles((theme) => ({
   randomButton: {
     marginTop: "15px",
     marginLeft: "10px",
+    color: "#3f51b5",
+    borderColor: "#3f51b5",
+  },
+  imBoredButton: {
+    marginTop: "15px",
+    marginLeft: "10px",
+    color: "#3f51b5",
+    borderColor: "#3f51b5",
   },
 }));

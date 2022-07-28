@@ -4,7 +4,7 @@ const activitySchema = new mongoose.Schema(
   {
     activity: { type: String, require: true },
     accessibility: { type: Number, require: true },
-    participants: { type: Number, require: true/* , min: 1 */ },
+    participants: { type: Number, require: true },
     price: { type: Number, require: true },
     type: { type: String, require: true },
     imageUrl: { type: String },

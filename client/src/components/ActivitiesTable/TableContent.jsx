@@ -89,7 +89,7 @@ export default function TableContent({ mergedActivitiesData }) {
                 .slice(
                   page * rowsPerPage,
                   (page + 1) * rowsPerPage
-                ) /* (page * rowsPerPage, page * rowsPerPage + rowsPerPage) */
+                ) 
                 .map((activity, i) => (
                   <TableRow key={i}>
                     <TableCell align="center">{activity.activity}</TableCell>

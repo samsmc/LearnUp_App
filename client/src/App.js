@@ -8,7 +8,6 @@ import {
   getRandomActivities,
   getSinlgeRandomActivity,
   getAllLocalActivities,
-  saveNewActivity,
 } from "./api";
 import Header from "./components/Header/Header";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
@@ -19,15 +18,12 @@ import Register from "./components/userRegistration/Register";
 import Login from "./components/userRegistration/Login";
 import NewActivityForm from "./components/NewActivityForm/NewActivityForm";
 
-import "./styles-App.css";
-
 const App = () => {
   const [activities, setActivities] = useState([]);
   const [allActivities, setAllActivities] = useState([]);
   const [randomActivities, setRandomActivities] = useState([]);
   const [singleRandomActivity, setSingleRandomActivity] = useState([]);
   const [allLocalActivities, setAllLocalActivities] = useState([]);
-  const [concatedActivities, setConcatedActivities] = useState([]);
 
   const [searchActivity, setSearchActivity] = useState("");
 
@@ -62,21 +58,11 @@ const App = () => {
 
   useEffect(() => {
     getAllLocalActivities().then((data) => {
-      console.log({ data });
       setAllLocalActivities(data);
     });
   }, []);
 
-  /* useEffect(() => {
-    saveNewActivity().then((data) => {
-      console.log({ data });
-      setAllLocalActivities(data);
-    });
-  }, []); */
-
   let mergedActivitiesData = allActivities.concat(allLocalActivities);
-  // console.log({ mergedActivitiesData });
-
 
   return (
     <>
@@ -106,6 +92,7 @@ const App = () => {
             path="/search"
             element={
               <Search
+                allActivities={allActivities}
                 mergedActivitiesData={mergedActivitiesData}
                 searchActivity={searchActivity}
                 setSearchActivity={setSearchActivity}

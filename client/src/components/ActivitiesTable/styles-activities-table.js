@@ -5,9 +5,6 @@ export default makeStyles((theme) => ({
     margin: theme.spacing(5),
     padding: theme.spacing(3),
   },
-  /* searchInput: {
-    width: "75%",
-  }, */
   header: {
     color: "#FFFFFF",
   },
@@ -23,7 +20,6 @@ export default makeStyles((theme) => ({
     },
     "& tbody tr:hover": {
       backgroundColor: "#fffbf2",
-      // cursor: "pointer",
     },
   },
 }));

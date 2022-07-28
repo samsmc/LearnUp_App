@@ -26,13 +26,10 @@ const Homepage = ({
   setSearchActivity,
   isLoading,
   setType,
-  allLocalActivities,
 }) => {
   const classes = useStyles();
 
   let navigate = useNavigate();
-
-  // console.log({allLocalActivities})
 
   return (
     <>
@@ -74,15 +71,15 @@ const Homepage = ({
 
                 <Button
                   className={classes.randomButton}
-                  variant="contained"
+                  variant="outlined"
                   onClick={() => setActivities(randomActivities)}
                 >
                   Random
                 </Button>
 
                 <Button
-                  className={classes.randomButton}
-                  variant="contained"
+                  className={classes.imBoredButton}
+                  variant="outlined"
                   onClick={() => setActivities(singleRandomActivity)}
                 >
                   I'm Bored

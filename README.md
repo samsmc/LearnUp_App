@@ -14,7 +14,7 @@ In the project directory, you can run:
 It installs all the dependencies necessary to run the app.
 
 Create an `.env` file in the `client`folder and insert your values for the following: 
-* MONGODB_URL=<link to connect to your database>
+* MONGODB_URL=`link to connect to your database`
 * PUBLIC_DOMAIN=http://localhost:3000
 * PORT=8800
 
