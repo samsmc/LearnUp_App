@@ -8,12 +8,12 @@ Github repository: [https://github.com/samsmc/LearnUp_App/tree/master/client](ht
 
 You can clone the repo using: https://github.com/samsmc/LearnUp_App.git \
 
-In the project directory, you can run:
+In each folder (./client and ./server) directory, you can run:
 ### `npm install`
 
 It installs all the dependencies necessary to run the app.
 
-Create an `.env` file in the `client`folder and insert your values for the following: 
+Create an `.env` file in the `server` folder and insert your values for the following: 
 * MONGODB_URL=`link to connect to your database`
 * PUBLIC_DOMAIN=http://localhost:3000
 * PORT=8800
