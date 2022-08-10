@@ -49,6 +49,7 @@ const App = () => {
   }, [singleRandomActivity]);
 
   useEffect(() => {
+    setIsLoading(true);
     getActivitiesByType(type).then((data) => {
       setActivities(data);
       setIsLoading(false);
@@ -73,17 +74,13 @@ const App = () => {
             path="/"
             element={
               <Homepage
-                allActivities={allActivities}
-                searchActivity={searchActivity}
-                setSearchActivity={setSearchActivity}
                 activities={activities}
                 setActivities={setActivities}
-                randomActivities={randomActivities}
-                singleRandomActivity={singleRandomActivity}
                 type={type}
-                setType={setType}
+                randomActivities={randomActivities}
                 isLoading={isLoading}
-                allLocalActivities={allLocalActivities}
+                singleRandomActivity={singleRandomActivity}
+                setType={setType}
               />
             }
           />
@@ -92,9 +89,9 @@ const App = () => {
             element={
               <Search
                 allActivities={allActivities}
-                mergedActivitiesData={mergedActivitiesData}
                 searchActivity={searchActivity}
                 setSearchActivity={setSearchActivity}
+                mergedActivitiesData={mergedActivitiesData}
               />
             }
           />

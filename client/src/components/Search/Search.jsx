@@ -15,12 +15,14 @@ const Search = ({
 
   const filteredActivities = allActivities.filter((activities) => {
     if (searchActivity === "") {
-      return;
-    } else if (
+      return null;
+    }
+    if (
       activities.activity.toLowerCase().includes(searchActivity.toLowerCase())
     ) {
       return activities;
     }
+    return null;
   });
 
   return (
@@ -58,7 +60,7 @@ const Search = ({
               </div>
             </div>
 
-            <Grid container spacing={5} >
+            <Grid container spacing={5}>
               {filteredActivities.map((activity, i) => {
                 return (
                   <Grid item xs={12} md={5} key={i}>

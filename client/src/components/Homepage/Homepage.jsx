@@ -16,15 +16,12 @@ import List from "../List/List";
 import useStyles from "./styles-homepage";
 
 const Homepage = ({
-  allActivities,
   activities,
   setActivities,
   type,
   randomActivities,
-  singleRandomActivity,
-  searchActivity,
-  setSearchActivity,
   isLoading,
+  singleRandomActivity,
   setType,
 }) => {
   const classes = useStyles();
@@ -94,18 +91,7 @@ const Homepage = ({
                   Full list
                 </Button>
 
-                <List
-                  allActivities={allActivities}
-                  searchActivity={searchActivity}
-                  setSearchActivity={setSearchActivity}
-                  activities={activities}
-                  setActivities={setActivities}
-                  randomActivities={randomActivities}
-                  singleRandomActivity={singleRandomActivity}
-                  type={type}
-                  isLoading={isLoading}
-                  setType={setType}
-                />
+                <List activities={activities} />
               </>
             )}
           </div>
